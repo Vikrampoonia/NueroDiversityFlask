@@ -1,0 +1,65 @@
+version: "1.0.0"
+
+metadata:
+  name: "textdivider"
+  description: "Divides text into multiple readable parts or chapters for Dyslexic users"
+  author: "kdharsh24"
+  tags: [dyslexic, text, segmentation]
+  private: false
+
+inputs:
+  topic:
+    type: string
+    description: "Topic of the text"
+    required: true
+    example: "History of Space Exploration"
+  text:
+    type: string
+    description: "Text to divide into chapters"
+    required: true
+    example: "Space exploration has evolved over the decades..."
+
+model:
+  provider: "openai"
+  name: "gpt-4o"
+
+prompt: |
+  Divide the following text into multiple parts or chapters to improve readability for ADHD users.
+  Ensure logical segmentation, clear headings, and easy-to-understand language.
+
+  Text:
+  {text}
+
+  For each chapter, include two multiple-choice questions. Each question should have four answer options, with one correct answer.
+
+  Format the output as follows:
+
+  Chapter 1: [Chapter Title]  
+  [Chapter Text]
+
+  Q1: [Question 1]  
+    a) [Option 1]  b) [Option 2]  c) [Option 3]  d) [Option 4]  
+    Correct Answer: [Correct option]  
+
+  Q2: [Question 2]  
+    a) [Option 1]  b) [Option 2]  c) [Option 3]  d) [Option 4]  
+    Correct Answer: [Correct option]  
+
+  Chapter 2: [Chapter Title]  
+  [Chapter Text]
+
+  Q1: [Question 1]  
+    a) [Option 1]  b) [Option 2]  c) [Option 3]  d) [Option 4]  
+    Correct Answer: [Correct option]  
+
+  Q2: [Question 2]  
+    a) [Option 1]  b) [Option 2]  c) [Option 3]  d) [Option 4]  
+    Correct Answer: [Correct option]  
+
+  [Repeat for all chapters]
+
+
+
+readme: |
+  This flow takes in long-form text and divides it into multiple easy-to-read parts or chapters, helping Dyslexic users process the information more effectively.
+  Additionally, it generates two multiple-choice questions to aid comprehension.

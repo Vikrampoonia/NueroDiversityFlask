@@ -1,0 +1,34 @@
+version: "1.0.0"
+
+metadata:
+  name: "textdivider"
+  description: "Divides text into multiple readable parts or chapters for Dyslexic users"
+  author: "kdharsh24"
+  tags: [dyslexic, text, segmentation]
+  private: false
+
+inputs:
+  topic:
+    type: string
+    description: "Topic of the text"
+    required: true
+    example: "History of Space Exploration"
+  text:
+    type: string
+    description: "Text to divide into chapters"
+    required: true
+    example: "Space exploration has evolved over the decades..."
+
+model:
+  provider: "openai"
+  name: "gpt-4o"
+
+prompt: |
+  give me a small story return the story only in 200-300 chars
+
+
+
+
+readme: |
+  This flow takes in long-form text and divides it into multiple easy-to-read parts or chapters, helping Dyslexic users process the information more effectively.
+  Additionally, it generates two multiple-choice questions to aid comprehension.
