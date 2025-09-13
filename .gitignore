@@ -1,0 +1,5 @@
+.env
+package-lock.json
+__pycache__/
+NeuroDiverse/
+node_modules/

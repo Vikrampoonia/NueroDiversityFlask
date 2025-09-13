@@ -1,0 +1,14 @@
+flask
+gunicorn
+
+celery
+redis
+
+Flask-Cors
+google-generativeai
+python-dotenv
+
+PyMuPDF
+weasyprint
+gTTS
+

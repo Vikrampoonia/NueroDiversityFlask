@@ -1,0 +1,43 @@
+version: "1.0.0"
+
+metadata:
+  name: "dyslexia-text-checker"
+  description: "Compares a dyslexic user's text input with the correct text and provides a score with feedback."
+  author: "kdharsh24"
+  tags: [dyslexia, text, comparison, feedback]
+  private: false
+
+inputs:
+  correct_text:
+    type: string
+    description: "The correct reference text."
+    required: true
+    example: "The quick brown fox jumps over the lazy dog."
+  user_text:
+    type: string
+    description: "Text input from a dyslexic user."
+    required: true
+    example: "The kwik brwon fxo jmups oevr teh lzay dg."
+
+model:
+  provider: "openai"
+  name: "gpt-4o"
+
+prompt: |
+  Compare the given correct_text with the user_text.  
+  correct_text: {correct_text}
+  user_text: {user_text}
+  - Identify spelling errors, word order mistakes, and missing words.  
+  - Provide a score from 0 to 100 based on accuracy.  
+  - Give brief feedback on key mistakes and how to improve.  
+  - Return only the feedback and score in a structured format.
+
+output_format: |
+  {
+    "score": <numeric_score>,
+    "suggestion": <summary_feedback>
+  }
+
+readme: |
+  This model helps evaluate text input from dyslexic users by comparing it to the correct reference text.  
+  It provides a score (0-100) and feedback on errors, helping users improve their writing accuracy.
